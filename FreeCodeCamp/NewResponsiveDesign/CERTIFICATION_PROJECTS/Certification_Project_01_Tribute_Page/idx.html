@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tribute Page</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <header>
+        <h1 class="title-header">Alberto Santos-Dumont</h1>
+    </header>
+    <div class="carousel">
+        <img class="carousel-slide" src="https://picsum.photos/400/200?random=1" />
+        <img class="carousel-slide" src="https://picsum.photos/400/200?random=2" />
+        <img class="carousel-slide" src="https://picsum.photos/400/200?random=3" />
+        <img class="carousel-slide" src="https://picsum.photos/400/200?random=4" />
+        <button class="carousel-prev">&#10094;</button>
+        <button class="carousel-next">&#10095;</button>
+    </div>
+    <section class="section-carousel">
+        <h2 class="title-section">About</h2>
+        <div class="text-section-wrapper">
+            <p class="text-section">
+            <ul>
+                <div class="">
+                    <li><strong>1873</strong> - Born in Palmira (today named Santos Dumont), Minas Gerais</li>
+                    <li><strong>1891</strong> - Santos Dumont's father was partially paralyzed by a fall from a horse.
+                        He sold the plantation and went to Europe with his wife and Santos Dumont in search of
+                        treatment. He returned to Brazil with his parents at the end of the year.</li>
+                    <li><strong>1892</strong> - The family returned to Europe, but his father felt too ill to continue
+                        on to Paris from Lisbon, and Santos Dumont made the journey on his own. His father's health
+                        deteriorated and he decided to return to Brazil, where he died on August 30.</br> For the next
+                        four years Alberto lived in Paris, studying physics, chemistry, mechanics, and electricity with
+                        the help of a private tutor, and returning to Brazil for short holidays.</li>
+                    <li><strong>1898</strong> - Flew his first balloon design namely “Bresil”.</li>
+                    <li><strong>1898 <i>to</i> 1905</strong> - Built and flew 11 "Dirigibles". At that time, air traffic
+                        control did not exist so he used to float along Paris boulevards at rooftop level in one of his
+                        airships.</li>
+                    <li><strong>1901</strong> - Successfully made a trip by using his Dirigible “Number 6”.</li>
+                </div>
+                <div class="">
+                    <li><strong>1905</strong> - Completed the design of his first fixed-wing aircraft and a helicopter.
+                        In the next year, he flew an aircraft by piloting the “14-bis”, a canard biplane at a height of
+                        about five meters or less. This event was the first flight that the Aero-Club de France
+                        verified. This trip won the Deutsch-Archdeacon Prize for the first officially observed flight
+                        further than 25 meters.</li>
+                    <li><strong>1910</strong> - Suffered from double vision and vertigo that restricted him from driving
+                        and flying. He was also under treatment for suffering from multiple sclerosis.</li>
+                    <li><strong>1911</strong> - Moved to the French seaside village of Bénerville (now
+                        Benerville-sur-Mer), where he took up astronomy as a hobby.</li>
+                    <li><strong>1914</strong> - After the outbreak of war, his German-made telescope and unusual accent
+                        led to accusations he was a German spy tracking French naval activity, and his rooms searched by
+                        French police.</br>Upset by the allegation and depressed about his illness Santos-Dumont burned
+                        all his papers and plans.</br>He spent much of the 1920s in Swiss and French sanatoria, though
+                        returning to Brazil at times.</li>
+                </div>
+                <div class="">
+                    <li><strong>1931</strong> - Santos Dumont's nephew went to Switzerland and brought him to Brazil.
+                    </li>
+                    <li><strong>1932</strong> - Seriously ill and said to be depressed over his multiple sclerosis and
+                        the use of aircraft in warfare during São Paulo's Constitutionalist Revolution, he hanged
+                        himself on July 23 in the city of Guarujá (although his death certificate gives the cause of
+                        death as "cardiac collapse").</li>
+                </div>
+            </ul>
+            </p>
+        </div>
+    </section>
+    <section class="">
+        <h2 class="">Project</h2>
+        <div class="footer-project">
+            <img src="./sd00.webp" alt="">
+            <img src="./sd01.webp" alt="">
+            <img src="./sd02.webp" alt="">
+            <img src="./sd03.webp" alt="">
+            <img src="./sd04.webp" alt="">
+        </div>
+    </section>
+</body>
+<script>
+    // select the carousel container and slides
+    const carousel = document.querySelector(".carousel");
+    const slides = carousel.querySelectorAll(".carousel-slide");
+
+    // select the previous and next buttons
+    const prevButton = carousel.querySelector(".carousel-prev");
+    const nextButton = carousel.querySelector(".carousel-next");
+
+    // set the initial slide index and slide interval time (in milliseconds)
+    let slideIndex = 0;
+    const slideInterval = 6000;
+
+    // function to move to the specified slide index
+    const moveToSlide = (index) => {
+        slides.forEach((slide) => slide.style.display = "none");
+        slides[index].style.display = "block"; // show the specified slide
+        slideIndex = index; // update the slide index
+    }
+
+    // function to move the specified number of slides (positive or negative)
+    const moveSlide = (n) => {
+        const newIndex = slideIndex + n;
+        if (newIndex < 0) {
+            moveToSlide(slides.length - 1); // wrap around to the last slide
+        } else if (newIndex >= slides.length) {
+            moveToSlide(0); // wrap around to the first slide
+        } else {
+            moveToSlide(newIndex); // move to the specified slide
+        }
+    }
+
+    // set up automatic sliding
+    let slideIntervalId = setInterval(() => moveSlide(1), slideInterval);
+
+    // add event listeners to the buttons
+    prevButton.addEventListener("click", () => moveSlide(-1));
+    nextButton.addEventListener("click", () => moveSlide(1));
+
+    // stop automatic sliding when the user interacts with the carousel
+    carousel.addEventListener("mouseenter", () => clearInterval(slideIntervalId));
+    carousel.addEventListener("mouseleave", () => slideIntervalId = setInterval(() => moveSlide(1), slideInterval));
+</script>
+
+</html>
