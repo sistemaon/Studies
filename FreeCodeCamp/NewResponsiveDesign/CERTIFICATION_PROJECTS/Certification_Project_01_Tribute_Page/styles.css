@@ -1,18 +1,56 @@
 body {
-    margin: 5px;
-    padding: 5px;
     background-color: palegoldenrod;
+    min-width: 300px;
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+}
+
+.title-header {
+    text-align: center;
+}
+
+.list-section {
+    display: flex;
+    position: block;
+    justify-content: space-evenly;
+    list-style-position: inside;
+    overflow: hidden;
+    margin: 15px;
+    padding: 5px;
+}
+
+#section-carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+#carousel-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .carousel {
     position: relative;
-    max-width: 600px;
-    max-height: 300px;
-    min-width: 300px;
-    min-height: 150px;
-    margin: auto;
-    padding: auto;
-    display: flex;
+}
+
+.carousel-slide {
+    width: 100%;
+    height: auto;
+    border-radius: 30px;
+}
+
+/* hide all slides except the first one */
+.carousel-slide:not(:first-of-type) {
+    display: none;
 }
 
 .carousel-prev,
@@ -36,58 +74,29 @@ body {
     right: 0;
 }
 
-/* hide all slides except the first one */
-.carousel-slide:not(:first-of-type) {
-    display: none;
-}
-
-.carousel > img {
-    width: 100%;
-    height: auto;
-    border-radius: 30px;
-}
-
-.title-header {
-    text-align: center;
-    font-size: 2em;
-    font-weight: bold;
-    color: darkslategrey;
-}
-
-.section-carousel {
-    /* display: flex; */
-    /* flex-direction: column;
-    justify-content: center;
-    align-items: center; */
-    /* margin: 5px;
-    padding: 5px; */
-}
-
-.title-section {
-    color: darkslategray;
-}
-
-.text-section {
-    color: darkslategray;
-    text-align: center;
-}
-
-.footer-project {
-    display: flex;
-    justify-content: center;
-}
-
 /* set img size inside .footer-project size 100px X 100px*/
-.footer-project > img {
+.footer-project>img {
     width: 210px;
     height: 210px;
     margin: 5px;
     border-radius: 10%;
 }
 
-.text-section-wrapper {
-    /* max-width: 500px;
-    max-height: 250px;
-    min-width: 500px;
-    min-height: 250px; */
+.li-box {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 390px;
+}
+
+.li-box>li {
+    margin: 0;
+    padding: 0;
+    display: contents;
+}
+
+.li-box>li>strong {
+    padding: 6px;
+    color: darkslategray;
 }
